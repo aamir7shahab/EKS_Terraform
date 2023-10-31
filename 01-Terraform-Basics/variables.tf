@@ -13,6 +13,9 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "key_pair_name" {
+}
+
 variable "instance_name_tag" {
   type = string
   default = "xyz_instance_tf"

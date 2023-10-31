@@ -19,6 +19,7 @@ resource "aws_instance" "ec2test" {
   ami = var.ami
   instance_type = var.instance_type
 
+  key_name = var.key_pair_name
   tags = {
     Name = var.instance_name_tag
   }

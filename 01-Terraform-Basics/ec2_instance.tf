@@ -16,11 +16,13 @@ provider "aws" {
 
 # Resource Block
 resource "aws_instance" "ec2test" {
-  ami = var.ami
+  ami = data.aws_ami.amzlinux2.id
   instance_type = var.instance_type
-
+  user_data = file("${path.module}/app1_install.sh")
   key_name = var.key_pair_name
+  vpc_security_group_ids = [aws_security_group.tf-ssh.id, aws_security_group.tf-web.id]
   tags = {
     Name = var.instance_name_tag
   }
 }
+
